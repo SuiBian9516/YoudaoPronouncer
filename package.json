@@ -1,0 +1,22 @@
+{
+  "name": "youdao_pronouncer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/request": "^2.48.12",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "ffcreator": "^7.5.8",
+    "request": "^2.88.2"
+  }
+}
