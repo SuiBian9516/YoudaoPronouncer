@@ -1,6 +1,7 @@
 import { FFCreator, FFScene, FFText } from "ffcreator";
 import * as path from "path";
 import { GeneratorConfig } from "../Types";
+import Logger from "../logger/Logger";
 
 export default class Generator{
     private config:GeneratorConfig;
@@ -35,9 +36,6 @@ export default class Generator{
                 scene1.addChild(text1);
                 scene1.addAudio({
                     path:path.join(this.config.resourcePath,labels[i] + j),
-                    fadeIn:0,
-                    fadeOut:0,
-                    
                 });
                 scene1.setDuration(this.config.eachDuration);
                 creator.addChild(scene1);
@@ -54,8 +52,6 @@ export default class Generator{
                 scene2.addChild(text2);
                 scene2.addAudio({
                     path:path.join(this.config.resourcePath,labels[i] + j),
-                    fadeIn:0,
-                    fadeOut:0
                 });
                 scene2.setDuration(this.config.eachDuration);
                 creator.addChild(scene2);
@@ -63,10 +59,10 @@ export default class Generator{
         }
         creator.start();
         creator.on("start",()=>{
-            console.log("Start");
+            Logger.info('Process of video generating is going to start','Generator');
         });
         creator.on("complete",()=>{
-            console.log("Complete");
+            Logger.info('Video is successfully generated','Generator');
         })
     }
 }

@@ -4,6 +4,7 @@ import Generator from "./video.generator/Generator";
 import * as path from "path";
 import { ProcessConfig } from "./Types";
 import Stack from "./process.stack/Stack";
+import Logger from "./logger/Logger";
 
 export default class Pronouncer{
     private config:ProcessConfig;
@@ -11,9 +12,11 @@ export default class Pronouncer{
     constructor(config:ProcessConfig){
         this.config = config;
         this.processingStack = new Stack<Function>();
+        Logger.info("This software is successfully running...",'Main');
     }
 
     start(){
+        Logger.info('Task is going to be executed','Main');
         let database:{[keys:string]:string[]} = JSON.parse(fs.readFileSync(this.config.databasePath).toString());
         this.processingStack.add(()=>{
             let generator = new Generator({

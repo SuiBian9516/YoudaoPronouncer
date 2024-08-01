@@ -1,4 +1,5 @@
 import InvalidDataError from "../error/InvalidDataError";
+import Logger from "../logger/Logger";
 
 export default class Utils{
     static durationToNumber(duration:string):number{
@@ -12,7 +13,8 @@ export default class Utils{
 
     static checkData(data:any){
         if(data == undefined || data == null){
-            throw new InvalidDataError("This data is invalid");
+            Logger.error("Invalid data","Main");
+            process.exit(1);
         }
     }
 }

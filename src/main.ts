@@ -1,6 +1,7 @@
 import * as path from "path";
 import Utils from './utils/Utils'
 import Pronouncer from './Pronouncer'
+import * as fs from 'fs';
 
 let rootPath = process.argv[2];
 let databasePath = process.argv[3];
@@ -9,6 +10,8 @@ let outputName = process.argv[4];
 Utils.checkData(rootPath);
 Utils.checkData(databasePath);
 Utils.checkData(outputName);
+
+fs.mkdirSync(rootPath,{recursive:true});
 
 new Pronouncer({
     runtimePath:rootPath,

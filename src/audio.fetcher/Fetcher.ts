@@ -3,6 +3,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 import axios, { AxiosResponse } from "axios";
 import Stack from "../process.stack/Stack";
+import Logger from "../logger/Logger";
 
 export default class Fetcher{
     private config:FetcherConfig;
@@ -11,6 +12,7 @@ export default class Fetcher{
     }
 
     fetch(){
+        fs.mkdirSync(this.config.resourcePath,{recursive:true});
         let database:{[keys:string]:string[]} = this.config.database;
         let labels:string[] = Object.keys(database);
         //Main loop
@@ -21,7 +23,7 @@ export default class Fetcher{
                 processingStack.add(()=>{
                     let filePath = path.join(this.config.resourcePath,labels[i] + j);
                     if(!fs.existsSync(filePath)){
-                        console.log(this.config.baseURL + database[labels[i]][j]);
+                        Logger.info(`Fetching: ${database[labels[i]][j]}`,'Fetcher');
                         new Promise((resolve,reject)=>{
                             axios({
                                 method:'get',
@@ -43,6 +45,7 @@ export default class Fetcher{
                             })
                         })
                     }else{
+                        Logger.info(`Skipping: ${database[labels[i]][j]}`,"Fetcher");
                         (processingStack.get() as Function)();
                     }
                 });
