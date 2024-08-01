@@ -1,3 +1,4 @@
+import InvalidDataError from "../error/InvalidDataError";
 
 export default class Utils{
     static durationToNumber(duration:string):number{
@@ -7,5 +8,11 @@ export default class Utils{
         let secs:number = Number(data[2]);
         let cache:number = hours *3600 + mins *60 + secs;
         return cache;
+    }
+
+    static checkData(data:any){
+        if(data == undefined || data == null){
+            throw new InvalidDataError("This data is invalid");
+        }
     }
 }
