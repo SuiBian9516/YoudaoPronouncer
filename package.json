@@ -17,6 +17,7 @@
   "dependencies": {
     "axios": "^1.7.2",
     "ffcreator": "^7.5.8",
+    "get-audio-duration": "^4.0.1",
     "request": "^2.88.2"
   }
 }

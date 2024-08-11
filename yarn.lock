@@ -66,6 +66,20 @@
   resolved "https://registry.npmmirror.com/@ffprobe-installer/darwin-x64/-/darwin-x64-5.1.0.tgz#f52316ac0bbe6f4ac70fdaea8db259ba4a055b00"
   integrity sha512-J+YGscZMpQclFg31O4cfVRGmDpkVsQ2fZujoUdMAAYcP0NtqpC49Hs3SWJpBdsGB4VeqOt5TTm1vSZQzs1NkhA==
 
+"@ffprobe-installer/ffprobe@^2.1.1":
+  version "2.1.2"
+  resolved "https://registry.npmmirror.com/@ffprobe-installer/ffprobe/-/ffprobe-2.1.2.tgz#ef9826b714cefe5e2debbe357afbb1ba738dfb32"
+  integrity sha512-ZNvwk4f2magF42Zji2Ese16SMj9BS7Fui4kRjg6gTYTxY3gWZNpg85n4MIfQyI9nimHg4x/gT6FVkp/bBDuBwg==
+  optionalDependencies:
+    "@ffprobe-installer/darwin-arm64" "5.0.1"
+    "@ffprobe-installer/darwin-x64" "5.1.0"
+    "@ffprobe-installer/linux-arm" "5.2.0"
+    "@ffprobe-installer/linux-arm64" "5.2.0"
+    "@ffprobe-installer/linux-ia32" "5.2.0"
+    "@ffprobe-installer/linux-x64" "5.2.0"
+    "@ffprobe-installer/win32-ia32" "5.1.0"
+    "@ffprobe-installer/win32-x64" "5.1.0"
+
 "@ffprobe-installer/linux-arm64@5.2.0":
   version "5.2.0"
   resolved "https://registry.npmmirror.com/@ffprobe-installer/linux-arm64/-/linux-arm64-5.2.0.tgz#b6cb3735792d9d012d1caba4de2a6f90af2a8966"
@@ -501,6 +515,15 @@ cross-spawn@^6.0.0:
     shebang-command "^1.2.0"
     which "^1.2.9"
 
+cross-spawn@^7.0.3:
+  version "7.0.3"
+  resolved "https://registry.npmmirror.com/cross-spawn/-/cross-spawn-7.0.3.tgz#f73a85b9d5d41d045551c177e2882d4ac85728a6"
+  integrity sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==
+  dependencies:
+    path-key "^3.1.0"
+    shebang-command "^2.0.0"
+    which "^2.0.1"
+
 crypto-random-string@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmmirror.com/crypto-random-string/-/crypto-random-string-2.0.0.tgz"
@@ -664,6 +687,21 @@ execa@^0.10.0:
     p-finally "^1.0.0"
     signal-exit "^3.0.0"
     strip-eof "^1.0.0"
+
+execa@^5.0.0:
+  version "5.1.1"
+  resolved "https://registry.npmmirror.com/execa/-/execa-5.1.1.tgz#f80ad9cbf4298f7bd1d4c9555c21e93741c411dd"
+  integrity sha512-8uSpZZocAZRBAPIEINJj3Lo9HyGitllczc27Eh5YYojjMFMn8yHMDMaUHE2Jqfq05D/wucwI4JGURyXt1vchyg==
+  dependencies:
+    cross-spawn "^7.0.3"
+    get-stream "^6.0.0"
+    human-signals "^2.1.0"
+    is-stream "^2.0.0"
+    merge-stream "^2.0.0"
+    npm-run-path "^4.0.1"
+    onetime "^5.1.2"
+    signal-exit "^3.0.3"
+    strip-final-newline "^2.0.0"
 
 expand-template@^2.0.3:
   version "2.0.3"
@@ -881,6 +919,14 @@ gauge@^4.0.3:
     strip-ansi "^6.0.1"
     wide-align "^1.1.5"
 
+get-audio-duration@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.npmmirror.com/get-audio-duration/-/get-audio-duration-4.0.1.tgz#351fbae7682a441d871600aa0c7327300a9fe63f"
+  integrity sha512-sx1ZRXVRN+PZlnVq2ub4wnDfPtkL4kJFeI4/I7Su0UR1ckhCca3cDOvik2v2AjIY8oyHUnKaTOoTk3o1JYEaDw==
+  dependencies:
+    "@ffprobe-installer/ffprobe" "^2.1.1"
+    execa "^5.0.0"
+
 get-intrinsic@^1.1.3, get-intrinsic@^1.2.4:
   version "1.2.4"
   resolved "https://registry.npmmirror.com/get-intrinsic/-/get-intrinsic-1.2.4.tgz"
@@ -913,6 +959,11 @@ get-stream@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npmmirror.com/get-stream/-/get-stream-3.0.0.tgz"
   integrity sha512-GlhdIUuVakc8SJ6kK0zAFbiGzRFzNnY4jUuEbV9UROo4Y+0Ny4fjvcZFVTeDA4odpFyOQzaw6hXukJSq/f28sQ==
+
+get-stream@^6.0.0:
+  version "6.0.1"
+  resolved "https://registry.npmmirror.com/get-stream/-/get-stream-6.0.1.tgz#a262d8eef67aced57c2852ad6167526a43cbf7b7"
+  integrity sha512-ts6Wi+2j3jQjqi70w5AlN8DFnkSwC+MqmxEzdEALB2qXZYV3X/b1CTfgPLGJNMeAWxdPfU8FO1ms3NUfaHCPYg==
 
 getpass@^0.1.1:
   version "0.1.7"
@@ -1119,6 +1170,11 @@ https-proxy-agent@^5.0.0:
   dependencies:
     agent-base "6"
     debug "4"
+
+human-signals@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.npmmirror.com/human-signals/-/human-signals-2.1.0.tgz#dc91fcba42e4d06e4abaed33b3e7a3c02f514ea0"
+  integrity sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==
 
 humanize-ms@^1.2.1:
   version "1.2.1"
@@ -1375,6 +1431,11 @@ make-fetch-happen@^10.0.3:
     socks-proxy-agent "^7.0.0"
     ssri "^9.0.0"
 
+merge-stream@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npmmirror.com/merge-stream/-/merge-stream-2.0.0.tgz#52823629a14dd00c9770fb6ad47dc6310f2c1f60"
+  integrity sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w==
+
 methods@^1.1.2:
   version "1.1.2"
   resolved "https://registry.npmmirror.com/methods/-/methods-1.1.2.tgz"
@@ -1396,6 +1457,11 @@ mime@^2.4.6:
   version "2.6.0"
   resolved "https://registry.npmmirror.com/mime/-/mime-2.6.0.tgz"
   integrity sha512-USPkMeET31rOMiarsBNIHZKLGgvKc/LrjofAnBlOttf5ajRvqiRA8QsenbcooctK6d6Ts6aqZXBA+XbkKthiQg==
+
+mimic-fn@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.npmmirror.com/mimic-fn/-/mimic-fn-2.1.0.tgz#7ed2c2ccccaf84d3ffcb7a69b57711fc2083401b"
+  integrity sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==
 
 mimic-response@^2.0.0:
   version "2.1.0"
@@ -1621,6 +1687,13 @@ npm-run-path@^2.0.0:
   dependencies:
     path-key "^2.0.0"
 
+npm-run-path@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.npmmirror.com/npm-run-path/-/npm-run-path-4.0.1.tgz#b7ecd1e5ed53da8e37a55e1c2269e0b97ed748ea"
+  integrity sha512-S48WzZW777zhNIrn7gxOlISNAqi9ZC/uQFnRdbeIHhZhCA6UqpkOT8T1G7BvfdgP4Er8gF4sUbaS0i7QvIfCWw==
+  dependencies:
+    path-key "^3.0.0"
+
 npmlog@^5.0.1:
   version "5.0.1"
   resolved "https://registry.npmmirror.com/npmlog/-/npmlog-5.0.1.tgz"
@@ -1668,6 +1741,13 @@ once@^1.3.0, once@^1.3.1, once@^1.4.0:
   dependencies:
     wrappy "1"
 
+onetime@^5.1.2:
+  version "5.1.2"
+  resolved "https://registry.npmmirror.com/onetime/-/onetime-5.1.2.tgz#d0e96ebb56b07476df1dd9c4806e5237985ca45e"
+  integrity sha512-kbpaSSGJTWdAY5KPVeMOKXSrPtr8C8C7wodJbcsd51jRnmD+GZu8Y0VoU6Dm5Z4vWr0Ig/1NKuWRKf7j5aaYSg==
+  dependencies:
+    mimic-fn "^2.1.0"
+
 p-finally@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmmirror.com/p-finally/-/p-finally-1.0.0.tgz"
@@ -1708,6 +1788,11 @@ path-key@^2.0.0, path-key@^2.0.1:
   version "2.0.1"
   resolved "https://registry.npmmirror.com/path-key/-/path-key-2.0.1.tgz"
   integrity sha512-fEHGKCSmUSDPv4uoj8AlD+joPlq3peND+HRYyxFz4KPw4z926S/b8rIuFs2FYJg3BwsxJf6A9/3eIdLaYC+9Dw==
+
+path-key@^3.0.0, path-key@^3.1.0:
+  version "3.1.1"
+  resolved "https://registry.npmmirror.com/path-key/-/path-key-3.1.1.tgz#581f6ade658cbba65a0d3380de7753295054f375"
+  integrity sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q==
 
 performance-now@^2.1.0:
   version "2.1.0"
@@ -1929,10 +2014,22 @@ shebang-command@^1.2.0:
   dependencies:
     shebang-regex "^1.0.0"
 
+shebang-command@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npmmirror.com/shebang-command/-/shebang-command-2.0.0.tgz#ccd0af4f8835fbdc265b82461aaf0c36663f34ea"
+  integrity sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==
+  dependencies:
+    shebang-regex "^3.0.0"
+
 shebang-regex@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmmirror.com/shebang-regex/-/shebang-regex-1.0.0.tgz"
   integrity sha512-wpoSFAxys6b2a2wHZ1XpDSgD7N9iVjg29Ph9uV/uaP9Ex/KXlkTZTeddxDPSYQpgvzKLGJke2UU0AzoGCjNIvQ==
+
+shebang-regex@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.npmmirror.com/shebang-regex/-/shebang-regex-3.0.0.tgz#ae16f1644d873ecad843b0307b143362d4c42172"
+  integrity sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==
 
 side-channel@^1.0.6:
   version "1.0.6"
@@ -1944,7 +2041,7 @@ side-channel@^1.0.6:
     get-intrinsic "^1.2.4"
     object-inspect "^1.13.1"
 
-signal-exit@^3.0.0, signal-exit@^3.0.7:
+signal-exit@^3.0.0, signal-exit@^3.0.3, signal-exit@^3.0.7:
   version "3.0.7"
   resolved "https://registry.npmmirror.com/signal-exit/-/signal-exit-3.0.7.tgz"
   integrity sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==
@@ -2058,6 +2155,11 @@ strip-eof@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmmirror.com/strip-eof/-/strip-eof-1.0.0.tgz"
   integrity sha512-7FCwGGmx8mD5xQd3RPUvnSpUXHM3BWuzjtpD4TXsfcZ9EL4azvVVUscFYwD9nx8Kh+uCBC00XBtAykoMHwTh8Q==
+
+strip-final-newline@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npmmirror.com/strip-final-newline/-/strip-final-newline-2.0.0.tgz#89b852fb2fcbe936f6f4b3187afb0a12c1ab58ad"
+  integrity sha512-BrpvfNAE3dcvq7ll3xVumzjKjZQ5tI1sEUIKr3Uoks0XUl45St3FlatVqef9prk4jRDzhW6WZg+3bk93y6pLjA==
 
 strip-json-comments@~2.0.1:
   version "2.0.1"
@@ -2277,7 +2379,7 @@ which@^1.1.1, which@^1.2.9:
   dependencies:
     isexe "^2.0.0"
 
-which@^2.0.2:
+which@^2.0.1, which@^2.0.2:
   version "2.0.2"
   resolved "https://registry.npmmirror.com/which/-/which-2.0.2.tgz"
   integrity sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==

@@ -9,7 +9,8 @@ export default class Logger{
         process.stdout.write(`[WARN/${namespace}] ${msg}\n`);
     }
 
-    static error(msg:string,namespace:string){
+    static error(msg:string,namespace:string,autoExit:boolean = false){
         process.stdout.write(`[ERROR/${namespace}] ${msg}\n`);
+        if(autoExit) process.exit(1);
     }
 }

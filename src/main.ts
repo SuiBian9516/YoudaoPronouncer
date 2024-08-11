@@ -2,23 +2,20 @@ import * as path from "path";
 import Utils from './utils/Utils'
 import Pronouncer from './Pronouncer'
 import * as fs from 'fs';
+import { Config } from "./Types";
 
-let rootPath = process.argv[2];
-let databasePath = process.argv[3];
-let outputName = process.argv[4];
+let workPath = process.argv[2];
 
-Utils.checkData(rootPath);
-Utils.checkData(databasePath);
-Utils.checkData(outputName);
-
-fs.mkdirSync(rootPath,{recursive:true});
+Utils.checkData(workPath);
+let config:Config = JSON.parse(fs.readFileSync(path.join(workPath,"config.json")).toString());
 
 new Pronouncer({
-    runtimePath:rootPath,
-    resourcePath:path.join(rootPath,"audio"),
-    databasePath:databasePath,
-    autoClean:true,
-    outputPath:path.join(rootPath,"video"),
-    outputName:outputName,
-    cachePath:path.join(rootPath,"cache")
+    runtimePath:workPath,
+    resourcePath:path.join(workPath,"audio"),
+    databasePath:path.join(workPath,config.database),
+    outputPath:path.join(workPath,"video"),
+    outputName:config.output,
+    cachePath:path.join(workPath,"cache"),
+    fontPath:config.font,
+    autoClean:config.autoClean
 }).start();
