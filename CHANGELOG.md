@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### v2.0.1
+> Final patch
+- Optimizing: change a few log information
+
 ### v2.0.0
 > Final Update
 - New: Add a new option `autoClean` in config file which indicate whether programme clean work directory automatically after processing

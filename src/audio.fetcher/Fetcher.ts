@@ -50,9 +50,10 @@ export default class Fetcher{
                                     })
                                 }else{
                                     if(again){
-                                        Logger.error("Failed again, exiting...","Fetcher",true);
+                                        Logger.error("Failed, please check your network and run programme again","Fetcher",true);
                                     }else{
                                         Logger.error("Something went wrong when fetching " + database.getContentList(group[i])[j],'Fetcher');
+                                        Logger.info("Try fetching again","Fetcher");
                                         processingStack.add(func.bind(null,durationLists,true));
                                         (processingStack.get() as Function)();
                                     }
@@ -62,6 +63,7 @@ export default class Fetcher{
                                     reject(_);
                                 }else{
                                     Logger.error("Something went wrong when fetching " + database.getContentList(group[i])[j],'Fetcher');
+                                    Logger.info("Try fetching again","Fetcher");
                                     processingStack.add(func.bind(null,durationLists,true));
                                     (processingStack.get() as Function)();
                                 }

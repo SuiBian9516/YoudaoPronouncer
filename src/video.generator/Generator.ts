@@ -84,18 +84,19 @@ export default class Generator{
         creator.addChild(scene);
         creator.start();
         creator.on("start",()=>{
-            Logger.info('Process of video generating is going to start','Generator');
+            Logger.info('Video generation is going to start','Generator');
         });
         creator.on("complete",()=>{
-            Logger.info('Generated successfully','Generator');
+            Logger.info('Complete successfully','Generator');
+            Logger.info(`Output file name: ${this.config.outputName}`,"Generator");
             if(this.config.taskStack.isEmpty()){
-                Logger.info("No more tasks needed to be handled","Generator");
+                Logger.info("No more tasks need handling","Generator");
                 if(this.config.autoClean){
-                    Logger.info("Programme will clean the directories","Cleaner");
+                    Logger.info("Programme will clean the directories immediately","Cleaner");
                     Utils.removeDir(this.config.cachePath);
                     Utils.removeDir(this.config.rawResourcePath);
                 }
-                Logger.info("Programme is about to exit safely","Generator");
+                Logger.info("Exiting safely","Generator");
             }else{
                 (this.config.taskStack.get() as Function)();
             }
