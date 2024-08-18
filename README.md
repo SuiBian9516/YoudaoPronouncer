@@ -1,30 +1,33 @@
 # Youdao_Pronouncer
 
 ### What Youdao_Pronouncer
-This is a software designed by SuiBian9516 aiming to create English videos which contain twice-pronouncing audio.
-
-### Why Youdao_Pronouncer
-To make tasks teacher gives to me easier and save my time
+This is a software designed by SuiBian9516 aiming to create English videos which contain twice-pronouncing audios. **This project is for learning purposes only at your own risk**
 
 ## Command Usage
 ```shell
-main.js <workPath>
+node dist/main.js <workPath>
 ```
 `workPath`: the root path at which the programme runs
 
 ## Programme Usage
-`Firstly`, you are supposed to have FFmpeg installed in your computer and make sure that it is correctly configured.
+`Firstly`, you are supposed to have [FFmpeg](https://ffmpeg.org/) and [Typescript](https://www.typescriptlang.org/) installed in your computer and make sure that it is correctly configured.
 
 `Secondly`, unzip the source code.
 
 `Next`, choose the installing way you like
 **npm**
 ```shell
+#installing dependencies
 npm install
+#compile source code
+tsc
 ```
 **yarn**
 ```shell
+#installing dependencies
 yarn install
+#compile source code
+tsc
 ```
 
 `Then`, assuming that now you have a directory `example` and a config file `config.json`. Then make sure that you have put `example.json` database file in `example/asset/example.json`(see [Database](#Database)).
@@ -33,7 +36,7 @@ yarn install
 {
     "autoClean":true,
     "database":"./asset/example.json",
-    "output":["example"],
+    "output":"example",
 }
 ```
 Finally, run command below
@@ -61,13 +64,13 @@ In new version(>=1.0.0), command line only receives one argument that tells prog
 {
     "autoClean":true,
     "database":"./asset/example.json",
-    "output":["example"],
+    "output":"example",
     "font":"./fonts.ttf"
 }
 ```
-`autoClean`: means programme will automatically clean the working directory, but sadly, in current version, it does not work
+`autoClean`: means programme will automatically clean the working directory, including `cache` and `audio`
 `database`: means the path of database file(s). If path refers to a file, it will only parse one file; if path refers to a directory, parser will consider all files under this directory as `database` file
-`output`: means the name(s) of generated video(s)
+`output`: means the names of generated videos. If over two database files are detected, then programme will add `_{index}` behind `output` automatically
 `font`: means a path which refers to a exact font file.
 
 ## Database

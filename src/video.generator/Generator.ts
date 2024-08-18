@@ -2,7 +2,7 @@ import { FFCreator, FFScene, FFText } from "ffcreator";
 import * as path from "path";
 import { GeneratorConfig } from "../Types";
 import Logger from "../logger/Logger";
-// import Utils from "../utils/Utils";
+import Utils from "../utils/Utils";
 
 export default class Generator{
     private config:GeneratorConfig;
@@ -31,7 +31,7 @@ export default class Generator{
                     x:1920/2,
                     y:1080/2,
                     color:"#ffffff",
-                    fontSize:135,
+                    fontSize:100,
                     font:this.config.fontPath
                 });
                 text1.alignCenter();
@@ -48,7 +48,7 @@ export default class Generator{
                     x:1920/2,
                     y:1080/2,
                     color:"#ffffff",
-                    fontSize:135,
+                    fontSize:100,
                     font:this.config.fontPath
                 });
                 text2.alignCenter();
@@ -90,11 +90,11 @@ export default class Generator{
             Logger.info('Generated successfully','Generator');
             if(this.config.taskStack.isEmpty()){
                 Logger.info("No more tasks needed to be handled","Generator");
-                // if(this.config.autoClean){
-                //     Logger.info("Programme will clean the directories","Cleaner");
-                //     Utils.removeDir(this.config.cachePath);
-                //     Utils.removeDir(this.config.resourcePath);
-                // }
+                if(this.config.autoClean){
+                    Logger.info("Programme will clean the directories","Cleaner");
+                    Utils.removeDir(this.config.cachePath);
+                    Utils.removeDir(this.config.rawResourcePath);
+                }
                 Logger.info("Programme is about to exit safely","Generator");
             }else{
                 (this.config.taskStack.get() as Function)();

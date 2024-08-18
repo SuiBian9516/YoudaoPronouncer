@@ -1,5 +1,12 @@
 # CHANGELOG
 
+### v2.0.0
+> Final Update
+- New: Add a new option `autoClean` in config file which indicate whether programme clean work directory automatically after processing
+- New: add a copyright screen in the end of each videos
+- Optimizing: now the option `output` is changed to `string` type which only refers one file name. If over two database files are going to process, then programme will add `_{index}` behind `output` and build a new name which refers to one current output file
+- Change: change the font size to 100
+
 ### v1.0.0
 > Final version
 - Optimizing: now `Fetcher` will try again when error occurs

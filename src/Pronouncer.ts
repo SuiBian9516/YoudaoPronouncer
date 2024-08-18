@@ -34,30 +34,36 @@ export default class Pronouncer{
 
     start(){
         let func = (index:number)=>{
-            Logger.info(`Handling task ${index}`,'Main');
-            let database:Parser = new Parser(fs.readFileSync(this.databaseLists[index]).toString());
-            this.processingStack.add((durationLists:{[group:string]:{[content:string]:number}})=>{
-                let generator = new Generator({
+            if(!fs.existsSync(path.join(this.config.outputPath,this.databaseLists.length === 1?this.config.outputName:`${this.config.outputName}_${index}` + ".mp4"))){
+                Logger.info(`Handling task ${index}`,'Main');
+                let database:Parser = new Parser(fs.readFileSync(this.databaseLists[index]).toString());
+                this.processingStack.add((durationLists:{[group:string]:{[content:string]:number}})=>{
+                    let generator = new Generator({
+                        resourcePath:path.join(this.config.resourcePath,String(index)),
+                        processingStack:this.processingStack,
+                        cachePath:this.config.cachePath,
+                        outputPath:this.config.outputPath,
+                        outputName:this.databaseLists.length === 1?this.config.outputName:`${this.config.outputName}_${index}`,
+                        database:database,
+                        taskStack:this.taskStack,
+                        durationLists:durationLists,
+                        fontPath:this.config.fontPath,
+                        autoClean:this.config.autoClean,
+                        rawResourcePath:this.config.resourcePath
+                    });
+                    generator.generate();
+                });
+                let _ = new Fetcher({
+                    baseURL:"http://dict.youdao.com/dictvoice?type=1&audio=",
                     resourcePath:path.join(this.config.resourcePath,String(index)),
                     processingStack:this.processingStack,
-                    cachePath:this.config.cachePath,
-                    outputPath:this.config.outputPath,
-                    outputName:this.config.outputName[index],
-                    database:database,
-                    taskStack:this.taskStack,
-                    durationLists:durationLists,
-                    fontPath:this.config.fontPath,
-                    autoClean:this.config.autoClean
-                });
-                generator.generate();
-            });
-            let _ = new Fetcher({
-                baseURL:"http://dict.youdao.com/dictvoice?type=1&audio=",
-                resourcePath:path.join(this.config.resourcePath,String(index)),
-                processingStack:this.processingStack,
-                database:database
-            }).fetch();
-            (this.processingStack.get() as Function)();
+                    database:database
+                }).fetch();
+                (this.processingStack.get() as Function)();
+            }else{
+                Logger.info(`Detected already existed output file, skipping task ${index}`,"Main");
+                ((this.taskStack.get() as Function) || function(){})();
+            }
         }
 
         for(let i = 0;i<this.databaseLists.length;i++){

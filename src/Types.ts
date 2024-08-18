@@ -5,7 +5,7 @@ export type ProcessConfig = {
     runtimePath:string,
     resourcePath:string,
     outputPath:string,
-    outputName:string[],
+    outputName:string,
     databasePath:string,
     cachePath:string,
     fontPath:string,
@@ -29,7 +29,8 @@ export type GeneratorConfig ={
     database:Parser,
     durationLists:{[group:string]:{[content:string]:number}},
     fontPath:string,
-    autoClean:boolean
+    autoClean:boolean,
+    rawResourcePath:string
 }
 
 export type DatabaseStructure = {
@@ -38,7 +39,7 @@ export type DatabaseStructure = {
 
 export type Config = {
     database:string,
-    output:string[],
+    output:string,
     font:string,
     autoClean:boolean
 }
