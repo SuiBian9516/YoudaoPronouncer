@@ -8,8 +8,8 @@ export type ProcessConfig = {
     outputName:string,
     databasePath:string,
     cachePath:string,
-    fontPath:string,
-    autoClean:boolean
+    autoClean:boolean,
+    area:number
 }
 
 export type FetcherConfig = {
@@ -27,19 +27,23 @@ export type GeneratorConfig ={
     outputPath:string,
     outputName:string,
     database:Parser,
-    durationLists:{[group:string]:{[content:string]:number}},
-    fontPath:string,
     autoClean:boolean,
     rawResourcePath:string
 }
 
 export type DatabaseStructure = {
-    [group:string]:{[content:string]:string}
+    times:number,
+    title:string,
+    description?:string,
+    version:string,
+    data:{
+       [group:string]:{[content:string]:string} 
+    }
 }
 
 export type Config = {
     database:string,
     output:string,
-    font:string,
-    autoClean:boolean
+    autoClean:boolean,
+    area:0|1
 }

@@ -2,3 +2,4 @@ node_modules
 asset
 dist
 test
+build

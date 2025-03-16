@@ -1,0 +1,65 @@
+name: Build App
+
+on:
+  push:
+    branches:
+      - main     # 主分支推送触发
+    tags:
+      - 'v*'     # 标签触发（例如 v1.0.0）
+
+jobs:
+  build:
+    name: Build Windows Binary
+    runs-on: windows-latest  # 仅使用 Windows 环境
+
+    steps:
+      # 检出代码
+      - uses: actions/checkout@v4
+
+      # 设置 Node.js 环境
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'  # 推荐使用 LTS 版本
+
+      # 安装项目依赖
+      - name: Install Dependencies
+        run: npm install
+
+      # 构建二进制文件
+      - name: Run Build
+        run: npm run build  # 你的构建命令
+
+      # 上传构建产物
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-binary
+          path: build/  # 替换为你的实际输出目录
+  
+  create-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Read whatsnew.md
+        id: changelog
+        run: |
+          # 读取 whatsnew.md 内容并转义特殊字符
+          if [ -f CHANGELOG.md ]; then
+            body=$(sed -e 's/"/\\"/g' -e 's/$/\\n/' CHANGELOG.md | tr -d '\n')
+            echo "body={ \"text\": \"$body\" }" >> $GITHUB_OUTPUT
+          else
+            echo "::error::CHANGELOG.md file not found!"
+            exit 1
+          fi
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Version ${{ github.ref_name }} update
+          body: ${{ steps.changelog.outputs.body }}
+          draft: false
+          prerelease: false
